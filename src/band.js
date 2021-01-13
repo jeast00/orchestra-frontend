@@ -1,5 +1,6 @@
 class Band {
-    constructor(band_name) {
+    constructor(id, band_name) {
+        this.id = id
         this.band_name = band_name
     }
 
