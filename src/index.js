@@ -17,7 +17,8 @@ function fetchBandNames() {
     .then(bands => {
         for(const band of bands) {
             let new_band = new Band(band.id, band.band_name)
-            console.log(new_band);
+            new_band.renderBandNames();
+
         }
     })
 }
