@@ -1,4 +1,8 @@
+// Load DOM Content
 
+window.addEventListener("DOMContentLoaded", () => {
+    // debugger;
+})
 
 //create const variables 
 
