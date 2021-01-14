@@ -9,6 +9,11 @@ class Band {
 
     renderBandNames() {
         let bandNameDivContainer = document.getElementById("band-name-div-container")
-        bandNameDivContainer.innerHTML += `<h3>${this.band_name}</h3>`
+        // Don't use innerHTML when creating elements
+        //create a div inside the band div container - create element button - append to div
+        // store dataset 
+        //review study groups - general - check video study groups
+        bandNameDivContainer.innerHTML += `<h3>${this.band_name}</h3>
+                                          <button class="delete-band-button">Delete Band</button>`
     }
 }
