@@ -3,6 +3,7 @@
 window.addEventListener("DOMContentLoaded", () => {
     // debugger;
     fetchBandNames();
+    createBandNameForm();
 })
 
 //create const variables 
@@ -28,6 +29,14 @@ function fetchBandNames() {
 }
 
 // create a band name form function
+function createBandNameForm() {
+    let bandNameFormDivContainer = document.getElementById("band-name-form-div-container")
+    bandNameFormDivContainer.innerHTML += `<form>
+                                           <h2>Add a Band Here:</h2>
+                                           <input type="text" id="band-name-input">
+                                           <input type="submit" value="Add Band">
+                                           </form>`
+}
 
 // create a submit function for the band form
 
