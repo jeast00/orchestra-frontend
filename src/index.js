@@ -2,9 +2,8 @@
 
 window.addEventListener("DOMContentLoaded", () => {
     // debugger;
-    fetchBandNames();
     createBandNameForm();
-    submitBandForm();
+    fetchBandNames();
 })
 
 //create const variables 
@@ -40,7 +39,7 @@ function createBandNameForm() {
                                            </form>`
 
     // add event listener for the submit function from the form container variable
-    
+    bandNameFormDivContainer.addEventListener("submit", submitBandForm)
 }
 
 // create a submit function for the band form
@@ -51,7 +50,31 @@ function submitBandForm() {
     // needs to be a post request
     // need to collect the value of the form input text box and display the value on the screen
     let bandNameValue = document.getElementById("band-name-input").value
-    console.log(bandNameValue);
+    // console.log(bandNameValue);
+
+    // create a band object to obtain the input value
+
+    let band = {
+        band_name: bandNameValue
+    }
+
+    console.log(band);
+
+    // create a fetch post request to put the input value on the page
+    fetch(`${main_url}/bands`, {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "aaplication/json"
+        },
+        body: JSON.stringify(band)
+    })
+    .then(resp => resp.json())
+    .then(band => {
+        let newBandName = new Band(band.band_name)
+        newBandName.renderBandNames();
+    })
+
 }
 
 
