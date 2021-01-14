@@ -23,9 +23,6 @@ function renderSubmittedBandName(band) {
     // console.log(p.innerText);
     header_3.appendChild(p)
     bandNameForm.appendChild(header_3)
-    const deleteBandButton = document.createElement('button')
-    console.log(deleteBandButton);
-
     bandNameForm.reset()
 }
 
@@ -48,7 +45,19 @@ function submitBandName() {
 }
 
 
-fetchSavedBandNames();
+function createDeleteBandButton() {
+    const p = getElementsTagName('p')
+    const deleteBandButton = document.createElement('button')
+    // console.log(deleteBandButton);
+    // deleteBandButton.setAttribute("class", "delete-band-button")
+    // console.log(deleteBandButton);
+    // deleteBandButtonText = document.createTextNode('delete band')
+    // deleteBandButton.appendChild(deleteBandButtonText)
+    // header_3.appendChild(deleteBandButton)
+}
 
+
+fetchSavedBandNames();
+createDeleteBandButton();
 
 
