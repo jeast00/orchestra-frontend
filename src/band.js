@@ -9,6 +9,6 @@ class Band {
 
     renderBandNames() {
         let bandNameDivContainer = document.getElementById("band-name-div-container")
-        bandNameDivContainer.innerHTML += `<h3 id="band-name-header" onclick"renderBandInstruments()">${this.band_name}</h3>`
+        bandNameDivContainer.innerHTML += `<h3>${this.band_name}</h3>`
     }
 }

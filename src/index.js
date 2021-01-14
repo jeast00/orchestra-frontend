@@ -21,8 +21,8 @@ function fetchBandNames() {
     .then(bands => {
         for(let band of bands) {
             // console.log(band);
-            let bandName = new Band(band.band_name)
-            // console.log(bandName);
+            let bandName = new Band(band.id, band.band_name)
+            console.log(bandName);
             bandName.renderBandNames();
         }
     })
@@ -71,7 +71,7 @@ function submitBandForm() {
     })
     .then(resp => resp.json())
     .then(band => {
-        let newBandName = new Band(band.band_name)
+        let newBandName = new Band(band.id, band.band_name)
         newBandName.renderBandNames();
     })
 
@@ -79,6 +79,7 @@ function submitBandForm() {
 
 
 // delete a band name function
+
 
 // -------------------------------- //
 
