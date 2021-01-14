@@ -2,6 +2,7 @@
 
 window.addEventListener("DOMContentLoaded", () => {
     // debugger;
+    fetchBandNames();
 })
 
 //create const variables 
@@ -13,6 +14,10 @@ const main_url = "http://localhost:3000"
 // ------------------------------- //
 
 // fetch band names function
+function fetchBandNames() {
+    fetch(`${main_url}/bands`)
+    .then(resp => console.log(resp))
+}
 
 // create a band name form function
 
