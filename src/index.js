@@ -16,7 +16,15 @@ const main_url = "http://localhost:3000"
 // fetch band names function
 function fetchBandNames() {
     fetch(`${main_url}/bands`)
-    .then(resp => console.log(resp))
+    .then(resp => resp.json())
+    .then(bands => {
+        for(let band of bands) {
+            // console.log(band);
+            let bandName = new Band(band.band_name)
+            // console.log(bandName);
+            bandName.renderBandNames();
+        }
+    })
 }
 
 // create a band name form function
