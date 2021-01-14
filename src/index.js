@@ -14,9 +14,16 @@ function createBandNameForm() {
                                             <input type="text" id="band-name-input">
                                             <input type="submit" value="Add Band">
                                           </form>`
+
+    bandNameFormDivContainer.addEventListener("submit", submitBandName)
     
 }
 
+function submitBandName() {
+    event.preventDefault();
+    let bandNameValue = document.getElementById("band-name-input").value
+    console.log(bandNameValue);
+}
 
 createBandNameForm();
 
