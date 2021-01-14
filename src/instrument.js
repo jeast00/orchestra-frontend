@@ -5,4 +5,12 @@ class Instrument {
     }
 
     // render the instruments under each band
+
+    renderBandInstruments() {
+        // need to get the band-name container, create a band-instrument-div, and append instruments to each band name
+        let bandNameDivContainer = document.getElementById("band-name-div-container")
+        let createInstrumentDivContainer = document.createElement('div')
+        createInstrumentDivContainer.setAttribute('id', 'band-instrument-div-container')
+    }
+
 }
