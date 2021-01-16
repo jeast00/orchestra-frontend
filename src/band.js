@@ -28,7 +28,8 @@ class Band {
         bandNameDeleteButton.classList.add('band-name-delete-button')
         bandNameDiv.setAttribute('data-id', this.id)
         bandNameDeleteButton.setAttribute('data-id', this.id)
-        bandNameDeleteButton.setAttribute('onclick', "deleteBand()")
+        bandNameDeleteButton.addEventListener('click', this.deleteBand)
+        // bandNameDeleteButton.setAttribute('onclick', "window.location.reload()")
         bandNameDeleteButton.innerText = 'Delete Band'
         bandNameHeader.innerText = `${this.band_name}`
         bandNameHeader.appendChild(bandNameDeleteButton)
@@ -36,7 +37,18 @@ class Band {
         bandNameDiv.appendChild(p_bandName)
         bandNameDivContainer.appendChild(bandNameDiv)
         // console.log(bandNameDiv, bandNameHeader, bandNameDeleteButton);
-
+        
         // debugger;
+    }
+
+    //delete band function
+
+    deleteBand() {
+        let deleteBandID = parseInt(event.target.dataset.id)
+
+        fetch(`${main_url}/bands/${deleteBandID}`, {
+            method: "DELETE"
+        })
+        this.location.reload();
     }
 }

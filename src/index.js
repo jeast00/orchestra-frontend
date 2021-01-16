@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // debugger;
     createBandNameForm();
     fetchBandNames();
+
 })
 
 //create const variables 
@@ -22,11 +23,13 @@ function fetchBandNames() {
         for(let band of bands) {
             // console.log(band);
             let bandName = new Band(band.id, band.band_name)
-            console.log(bandName);
+            // console.log(bandName);
             bandName.renderBandNames();
         }
     })
 }
+
+// fetchBandNames();
 
 // create a band name form function
 function createBandNameForm() {
@@ -41,6 +44,8 @@ function createBandNameForm() {
     // add event listener for the submit function from the form container variable
     bandNameFormDivContainer.addEventListener("submit", submitBandForm)
 }
+
+// createBandNameForm();
 
 // create a submit function for the band form
 
@@ -58,7 +63,7 @@ function submitBandForm() {
         band_name: bandNameValue
     }
 
-    console.log(band);
+    // console.log(band);
 
     // create a fetch post request to put the input value on the page
     fetch(`${main_url}/bands`, {
@@ -78,12 +83,16 @@ function submitBandForm() {
 }
 
 
-// delete a band name function
-function deleteBand() {
-    let bandDeleteID = parseInt(event.target.dataset.id)
-    console.log(bandDeleteID);
-    debugger;
-}
+// // delete a band name function
+// function deleteBand() {
+//     event.preventDefault();
+//     let deleteBandID = parseInt(event.target.parentElement.dataset.id)
+
+//     fetch(`${main_url}/bands${deleteBandID}`, {
+
+//     })
+// }
+
 
 
 
