@@ -20,14 +20,22 @@ class Band {
 
         let bandNameDiv = document.createElement('div')
         let bandNameHeader = document.createElement('h3')
+        let p_bandName = document.createElement('p')
         let bandNameDeleteButton = document.createElement('button')
         bandNameDiv.classList.add('band-name-class')
         bandNameHeader.classList.add('band-name-header-3')
+        p_bandName.classList.add('p-band-name-class')
         bandNameDeleteButton.classList.add('band-name-delete-button')
         bandNameDiv.setAttribute('data-id', this.id)
         bandNameDeleteButton.setAttribute('data-id', this.id)
-        console.log(bandNameDiv, bandNameHeader, bandNameDeleteButton);
+        bandNameDeleteButton.innerText = 'Delete Band'
+        bandNameHeader.innerText = `${this.band_name}`
+        bandNameHeader.appendChild(bandNameDeleteButton)
+        p_bandName.appendChild(bandNameHeader)
+        bandNameDiv.appendChild(p_bandName)
+        bandNameDivContainer.appendChild(bandNameDiv)
+        // console.log(bandNameDiv, bandNameHeader, bandNameDeleteButton);
 
-        debugger;
+        // debugger;
     }
 }
