@@ -46,7 +46,7 @@ function createBandNameForm() {
 
 function submitBandForm() {
     // Submit button is used - need to use prevent default to stop refresh
-    event.preventDefault();
+    event.preventDefault(); // use for buttons
     // needs to be a post request
     // need to collect the value of the form input text box and display the value on the screen
     let bandNameValue = document.getElementById("band-name-input").value
@@ -79,6 +79,12 @@ function submitBandForm() {
 
 
 // delete a band name function
+function deleteBand() {
+    let bandDeleteID = parseInt(event.target.dataset.id)
+    console.log(bandDeleteID);
+    debugger;
+}
+
 
 
 // -------------------------------- //

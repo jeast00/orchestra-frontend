@@ -28,6 +28,7 @@ class Band {
         bandNameDeleteButton.classList.add('band-name-delete-button')
         bandNameDiv.setAttribute('data-id', this.id)
         bandNameDeleteButton.setAttribute('data-id', this.id)
+        bandNameDeleteButton.setAttribute('onclick', "deleteBand()")
         bandNameDeleteButton.innerText = 'Delete Band'
         bandNameHeader.innerText = `${this.band_name}`
         bandNameHeader.appendChild(bandNameDeleteButton)
