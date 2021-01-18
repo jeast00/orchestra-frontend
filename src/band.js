@@ -23,6 +23,8 @@ class Band {
         let p_bandName = document.createElement('p')
         let bandNameDeleteButton = document.createElement('button')
         bandNameDiv.setAttribute('id', 'band-name-id')
+        bandNameHeader.setAttribute('id', "band-name-head-3")
+        p_bandName.setAttribute('id', 'p-band-name')
         bandNameDiv.classList.add('band-name-class')
         bandNameHeader.classList.add('band-name-header-3')
         p_bandName.classList.add('p-band-name-class')

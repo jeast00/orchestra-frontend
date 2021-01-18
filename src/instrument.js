@@ -15,8 +15,9 @@ class Instrument {
 
     renderBandInstrumentNames() {
         // create an instrument name div to append to the band name div - get band name div
-        let bandNameDiv = document.getElementById('band-name-id')
-        console.log(bandNameDiv);
+        let bandNameDivContainer = document.getElementById('band-name-div-container')
+        let p_bandName = document.getElementById('p-band-name')
+        console.log(bandNameDivContainer, p_bandName);
     }
 
 }
