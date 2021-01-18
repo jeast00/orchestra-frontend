@@ -108,7 +108,7 @@ function fetchInstrumentNames() {
     .then(instruments => {
         for(instrument of instruments) {
             let instrumentName = new Instrument(instrument.instrument_name, instrument.band_id)
-            console.log(instrumentName);
+            // console.log(instrumentName);
             instrumentName.renderBandInstrumentNames();
         }
     })
