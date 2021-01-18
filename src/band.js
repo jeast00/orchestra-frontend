@@ -49,6 +49,6 @@ class Band {
         fetch(`${main_url}/bands/${deleteBandID}`, {
             method: "DELETE"
         })
-        this.location.reload();
+        this.parentElement.remove();
     }
 }
