@@ -1,6 +1,6 @@
 class Instrument {
-    constructor(instrument_name, band_id) {
-        this.id = this.id
+    constructor(id, instrument_name, band_id) {
+        this.id = id
         this.instrument_name = instrument_name
         this.band_id = band_id
     }
@@ -25,7 +25,8 @@ class Instrument {
         bandInstrumentNameDiv.classList.add('band-instrument-name-class')
         bandInstrumentHeader.classList.add('band-instrument-header-class')
         p_bandInstrumentName.classList.add('p-band-instrument-name-class')
-        console.log(bandNameHeader);
+        bandInstrumentNameDiv.setAttribute('data-id', this.id)
+        console.log(bandInstrumentNameDiv);
     }
 
 }

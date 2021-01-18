@@ -107,7 +107,7 @@ function fetchInstrumentNames() {
     .then(resp => resp.json())
     .then(instruments => {
         for(instrument of instruments) {
-            let instrumentName = new Instrument(instrument.instrument_name, instrument.band_id)
+            let instrumentName = new Instrument(instrument.id, instrument.instrument_name, instrument.band_id)
             // console.log(instrumentName);
             instrumentName.renderBandInstrumentNames();
         }
