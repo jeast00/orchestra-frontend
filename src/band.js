@@ -22,6 +22,7 @@ class Band {
         let bandNameHeader = document.createElement('h3')
         let p_bandName = document.createElement('p')
         let bandNameDeleteButton = document.createElement('button')
+        bandNameDiv.setAttribute('id', 'band-name-id')
         bandNameDiv.classList.add('band-name-class')
         bandNameHeader.classList.add('band-name-header-3')
         p_bandName.classList.add('p-band-name-class')
@@ -44,6 +45,7 @@ class Band {
     //delete band function
 
     deleteBand() {
+        event.preventDefault(event);
         let deleteBandID = parseInt(event.target.dataset.id)
 
         fetch(`${main_url}/bands/${deleteBandID}`, {

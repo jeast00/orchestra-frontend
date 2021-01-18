@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // debugger;
     createBandNameForm();
     fetchBandNames();
+    fetchInstrumentNames();
 
 })
 
@@ -99,6 +100,17 @@ function submitBandForm() {
 // -------------------------------- //
 
 // fetch instrument names function and show them when a band name is clicked
+
+function fetchInstrumentNames() {
+
+    fetch(`${main_url}/instruments`)
+    .then(resp => resp.json())
+    .then(instruments => {
+        for(instrument of instruments) {
+            console.log(instrument);
+        }
+    })
+}
 
 // create sounds for each instrument when clicked function
 

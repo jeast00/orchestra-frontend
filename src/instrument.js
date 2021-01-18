@@ -13,4 +13,10 @@ class Instrument {
     //     createInstrumentDivContainer.setAttribute('id', 'band-instrument-div-container')
     // }
 
+    renderInstruments() {
+        // create an instrument name div to append to the band name div - get band name div
+        let bandNameDiv = document.getElementById('band-name-id')
+        console.log(bandNameDiv);
+    }
+
 }
