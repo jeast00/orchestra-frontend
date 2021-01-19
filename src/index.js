@@ -1,9 +1,11 @@
 
 function createBandNameForm() {
     const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
-    // console.log(bandNameFormDivContainer);
-    const bandNameFormTag = document.createElement('form')
-    console.log(bandNameFormTag);
+    bandNameFormDivContainer.innerHTML += `<form>
+                                            <h2>Add a Band Here:</h2>
+                                            <input type="text" id="band-name-form-input">
+                                            <input type="submit" value="Add Band">
+                                            </form>`
 }
 
 createBandNameForm();
