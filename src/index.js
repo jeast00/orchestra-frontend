@@ -16,8 +16,21 @@ function submitBandName() {
     let bandNameValue = document.getElementById('band-name-form-input').value 
     console.log(bandNameValue);
 
+    let band = {
+        band_name: bandNameValue
+    }
+
+    // console.log(band);
+
 }
 
+function renderBand() {
+    const bandNameDivContainer = document.getElementById('band-name-div-container')
+    // console.log(bandNameDivContainer);
+    
+}
+
+renderBand();
 
 
 
