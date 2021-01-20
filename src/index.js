@@ -29,6 +29,8 @@ function submitBandName() {
             band_name: document.getElementById('band-name-input').value
         })
     }
+
+    // fetch the url with the configuration object
     fetch(`${main_url}/bands`, configurationObject)
 
     renderBand();
@@ -55,4 +57,11 @@ function renderBand() {
     bandNameHeader3.appendChild(bandInstrumentNameFormTag)
 }
 
+//fetch bands
+function fetchBands() {
+    fetch(`${main_url}/bands `)
+    .then(console.log)
+}
+
 createBandNameForm();
+fetchBands();
