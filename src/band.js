@@ -5,7 +5,7 @@ class Band {
     }
 
     // render band names with instrument names for each band
-    renderBands(band) {
+    renderBands() {
         // get element id of band name div container
         const bandNameDivContainer = document.getElementById('band-name-div-container')
 
@@ -29,7 +29,7 @@ class Band {
         bandNameHeader3.appendChild(bandNameDeleteButton)
         bandNameDiv.appendChild(bandNameHeader3)
         bandNameDivContainer.appendChild(bandNameDiv)
-        console.log(bandNameDiv);
+        // console.log(bandNameDiv);
     }
 
     deleteBand() {

@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=> {
     createBandNameForm();
     fetchBandNames();
+    fetchInstrumentNames();
     // addBandName();
 })
 
@@ -16,7 +17,7 @@ function createBandNameForm() {
                                             <input type="text" id="band-name-input">
                                             <input type="submit" value="Add Band">
                                             </form>`
-    console.log(bandNameFormDivContainer);
+    // console.log(bandNameFormDivContainer);
     bandNameFormDivContainer.addEventListener('submit', addBandName)
 }
 
@@ -29,6 +30,14 @@ function fetchBandNames() {
             let bandName = new Band(band.id, band.band_name)
             bandName.renderBands();
         }
+    })
+}
+
+function fetchInstrumentNames() {
+    fetch(`${main_url}/instruments`)
+    .then(resp => resp.json())
+    .then(instruments => {
+        console.log(instruments);
     })
 }
 
@@ -55,7 +64,7 @@ function addBandName() {
         let newBandName = new Band(band.id, band.band_name)
         newBandName.renderBands();
     })
-    console.log(bandNameInput);
+    // console.log(bandNameInput);
 }
 
 
