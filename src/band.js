@@ -24,11 +24,20 @@ class Band {
         bandNameDeleteButton.setAttribute('id', 'band-name-delete-button')
         bandNameDeleteButton.setAttribute('data-id', this.id)
         bandNameDeleteButton.innerText = "Delete Band"
-
+        bandNameDeleteButton.addEventListener('click', this.deleteBand)
 
         bandNameHeader3.appendChild(bandNameDeleteButton)
         bandNameDiv.appendChild(bandNameHeader3)
         bandNameDivContainer.appendChild(bandNameDiv)
         console.log(bandNameDiv);
+    }
+
+    deleteBand() {
+        let bandDeleteID = parseInt(event.target.dataset.id)
+
+        fetch(`${main_url}/bands/${bandDeleteID}`, {
+            method: 'DELETE'
+        })
+        this.parentElement.remove(); // removes the parent element of the delete button selected - validate deletion from database
     }
 }
