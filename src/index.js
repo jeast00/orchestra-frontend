@@ -10,11 +10,15 @@ function createBandNameForm() {
                                             <input type="text" id="band-name-input">
                                             <input type="submit" value="Add Band">
                                             </form>`
-    console.log(bandNameFormDivContainer);
+    bandNameFormDivContainer.addEventListener('submit', submitBandName)
+
+    
 }
 
 function submitBandName() {
-    
+    event.preventDefault();
+    const bandNameValue = document.getElementById('band-name-input').value 
+    console.log(bandNameValue);
 }
 
 createBandNameForm();
