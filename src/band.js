@@ -11,6 +11,7 @@ class Band {
 
         // create element for band name div and set the attributes for the div element
         const bandNameDiv = document.createElement('div')
+        bandNameDiv.classList.add('band-name-div-class')
         bandNameDiv.setAttribute('id', 'band-name-div')
         bandNameDiv.setAttribute('data-id', this.id)
 
