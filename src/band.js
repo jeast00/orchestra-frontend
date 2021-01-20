@@ -27,7 +27,10 @@ class Band {
         bandNameDeleteButton.innerText = "Delete Band"
         bandNameDeleteButton.addEventListener('click', this.deleteBand)
 
-        // apennd the elements to the DOM
+        // create a form element to add instruments to the band
+        
+
+        // append the elements to the DOM
         bandNameHeader3.appendChild(bandNameDeleteButton)
         bandNameDiv.appendChild(bandNameHeader3)
         bandNameDivContainer.appendChild(bandNameDiv)
