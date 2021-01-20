@@ -20,14 +20,14 @@ class Band {
         bandNameHeader3.setAttribute('id', 'band-name-header-3')
         bandNameHeader3.innerText = `${this.band_name}`
 
-        // create lement for delete button and set the attributes for the delete button element
+        // create element for delete button and set the attributes for the delete button element
         const bandNameDeleteButton = document.createElement('button')
         bandNameDeleteButton.setAttribute('id', 'band-name-delete-button')
         bandNameDeleteButton.setAttribute('data-id', this.id)
         bandNameDeleteButton.innerText = "Delete Band"
         bandNameDeleteButton.addEventListener('click', this.deleteBand)
 
-        // apeend the elements to the DOM
+        // apennd the elements to the DOM
         bandNameHeader3.appendChild(bandNameDeleteButton)
         bandNameDiv.appendChild(bandNameHeader3)
         bandNameDivContainer.appendChild(bandNameDiv)
