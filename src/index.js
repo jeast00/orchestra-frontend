@@ -13,4 +13,8 @@ function createBandNameForm() {
     console.log(bandNameFormDivContainer);
 }
 
+function submitBandName() {
+    
+}
+
 createBandNameForm();
