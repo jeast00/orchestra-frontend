@@ -16,9 +16,22 @@ function createBandNameForm() {
 }
 
 function submitBandName() {
+    // use prevent default to stop refreshing the page
     event.preventDefault();
+
+    // create variables to hold elements and create elements
+    const bandNameDivContainer = document.getElementById('band-name-div-container')
     const bandNameValue = document.getElementById('band-name-input').value 
-    console.log(bandNameValue);
+    const bandNameDiv = document.createElement('div')
+    const bandNameHeader3 = document.createElement('h3')
+
+    // append the variable names to the page
+    bandNameHeader3.innerText = bandNameValue
+    bandNameDiv.appendChild(bandNameHeader3)
+    bandNameDivContainer.appendChild(bandNameDiv)
+
+    // console.log(bandNameDivContainer);
+
 }
 
 createBandNameForm();
