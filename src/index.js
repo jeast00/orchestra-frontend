@@ -1,6 +1,7 @@
 
 
-
+// create variables
+const main_url = "http://localhost:3000"
 
 
 function createBandNameForm() {
@@ -18,7 +19,22 @@ function createBandNameForm() {
 function submitBandName() {
     // use prevent default to stop refreshing the page
     event.preventDefault();
+    const configurationObject = {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            band_name: document.getElementById('band-name-input').value
+        })
+    }
+    fetch(`${main_url}/bands`, configurationObject)
 
+    renderBand();
+}
+
+function renderBand() {
     // create variables to hold elements and create elements
     const bandNameDivContainer = document.getElementById('band-name-div-container')
     const bandNameValue = document.getElementById('band-name-input').value 
@@ -30,8 +46,13 @@ function submitBandName() {
     bandNameDiv.appendChild(bandNameHeader3)
     bandNameDivContainer.appendChild(bandNameDiv)
 
-    // console.log(bandNameDivContainer);
+    
 
+    const bandInstrumentNameFormTag = document.createElement('form')
+    const bandInstrumentNameSelectTag = document.createElement('select')
+
+    bandInstrumentNameFormTag.appendChild(bandInstrumentNameSelectTag)
+    bandNameHeader3.appendChild(bandInstrumentNameFormTag)
 }
 
 createBandNameForm();
