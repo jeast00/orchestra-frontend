@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", ()=> {
 })
 
 // declare variables
-
+const main_url = "http://localhost:3000"
 
 // declare functions
 
@@ -22,6 +22,7 @@ function createBandNameForm() {
 function addBandName() {
     event.preventDefault();
     const bandNameInput = document.getElementById('band-name-input').value 
+
     console.log(bandNameInput);
 }
 
