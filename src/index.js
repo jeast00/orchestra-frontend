@@ -1,8 +1,20 @@
 
 
 // create variables
+const bandInput = document.getElementById('band-name-input')
 const main_url = "http://localhost:3000"
 
+
+//fetch bands
+function fetchBands() {
+    fetch(`${main_url}/bands`)
+    .then(resp => resp.json())
+    .then(bands => {
+        for(band of bands) {
+            renderBand(band.band_name)
+        } 
+    })
+}
 
 function createBandNameForm() {
     const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
@@ -26,20 +38,20 @@ function submitBandName() {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            band_name: document.getElementById('band-name-input').value
+            band_name: bandInput.value
         })
     }
 
     // fetch the url with the configuration object
     fetch(`${main_url}/bands`, configurationObject)
 
-    renderBand();
+    renderBand(bandInput.value);
 }
 
-function renderBand() {
+function renderBand(band) {
     // create variables to hold elements and create elements
     const bandNameDivContainer = document.getElementById('band-name-div-container')
-    const bandNameValue = document.getElementById('band-name-input').value 
+    const bandNameValue = band
     const bandNameDiv = document.createElement('div')
     const bandNameHeader3 = document.createElement('h3')
 
@@ -57,11 +69,6 @@ function renderBand() {
     bandNameHeader3.appendChild(bandInstrumentNameFormTag)
 }
 
-//fetch bands
-function fetchBands() {
-    fetch(`${main_url}/bands `)
-    .then(console.log)
-}
 
-createBandNameForm();
 fetchBands();
+createBandNameForm();
