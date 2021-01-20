@@ -9,23 +9,24 @@ class Band {
         // get element id of band name div container
         const bandNameDivContainer = document.getElementById('band-name-div-container')
 
-        // create element for band name div
+        // create element for band name div and set the attributes for the div element
         const bandNameDiv = document.createElement('div')
         bandNameDiv.setAttribute('id', 'band-name-div')
         bandNameDiv.setAttribute('data-id', this.id)
 
-        // create element for band name header
+        // create element for band name header and set the attributes for the header element
         const bandNameHeader3 = document.createElement('h3')
         bandNameHeader3.setAttribute('id', 'band-name-header-3')
         bandNameHeader3.innerText = `${this.band_name}`
 
-        // create lement for delete button
+        // create lement for delete button and set the attributes for the delete button element
         const bandNameDeleteButton = document.createElement('button')
         bandNameDeleteButton.setAttribute('id', 'band-name-delete-button')
         bandNameDeleteButton.setAttribute('data-id', this.id)
         bandNameDeleteButton.innerText = "Delete Band"
         bandNameDeleteButton.addEventListener('click', this.deleteBand)
 
+        // apeend the elements to the DOM
         bandNameHeader3.appendChild(bandNameDeleteButton)
         bandNameDiv.appendChild(bandNameHeader3)
         bandNameDivContainer.appendChild(bandNameDiv)

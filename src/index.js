@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", ()=> {
     createBandNameForm();
     fetchBandNames();
-    // fetchInstrumentNames();
+    fetchInstrumentNames();
     // addBandName();
 })
 
@@ -33,16 +33,17 @@ function fetchBandNames() {
     })
 }
 
-// function fetchInstrumentNames() {
-//     fetch(`${main_url}/instruments`)
-//     .then(resp => resp.json())
-//     .then(instruments => {
-//         for(const instrument of instruments) {
-//             let instrumentName = new instrument(instrument.id, instrument.instrument_name, instrument.band_id)
-//             instrumentName.renderBandInstrumentNames();
-//         }
-//     })
-// }
+function fetchInstrumentNames() {
+    fetch(`${main_url}/instruments`)
+    .then(resp => resp.json())
+    .then(instruments => {
+        for(const instrument of instruments) {
+            let instrumentName = new Instrument(instrument.id, instrument.instrument_name, instrument.band_id)
+            instrumentName.renderBandInstrumentNames();
+            console.log(instrumentName);
+        }
+    })
+}
 
 function addBandName() {
     event.preventDefault();
