@@ -23,7 +23,19 @@ function addBandName() {
     event.preventDefault();
     const bandNameInput = document.getElementById('band-name-input').value 
 
-    console.log(bandNameInput);
+    let band = {
+        band_name: bandNameInput
+    }
+    fetch(`${main_url}/bands`, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(band)
+    })
+    .then(resp => console.log(resp))
+    // console.log(bandNameInput);
 }
 
 

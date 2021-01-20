@@ -6,6 +6,7 @@ class Band {
 
     // render band names with instrument names for each band
     renderBands() {
-        
+        const bandNameDivContainer = document.getElementById('band-name-div-container')
+        console.log(bandNameDivContainer);
     }
 }
