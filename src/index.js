@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", ()=> {
     createBandNameForm();
+    // addBandName();
 })
 
 // declare variables
@@ -15,6 +16,13 @@ function createBandNameForm() {
                                             <input type="submit" value="Add Band">
                                             </form>`
     console.log(bandNameFormDivContainer);
+    bandNameFormDivContainer.addEventListener('submit', addBandName)
+}
+
+function addBandName() {
+    event.preventDefault();
+    const bandNameInput = document.getElementById('band-name-input').value 
+    console.log(bandNameInput);
 }
 
 
