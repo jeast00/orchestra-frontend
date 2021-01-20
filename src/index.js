@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", ()=> {
-    // createBandNameForm();
+    createBandNameForm();
     fetchBandNames();
     // addBandName();
 })
@@ -9,16 +9,16 @@ const main_url = "http://localhost:3000"
 
 // declare functions
 
-// function createBandNameForm() {
-//     const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
-//     bandNameFormDivContainer.innerHTML += `<form>
-//                                             <h2>Add a Band Here:</h2>
-//                                             <input type="text" id="band-name-input">
-//                                             <input type="submit" value="Add Band">
-//                                             </form>`
-//     console.log(bandNameFormDivContainer);
-//     bandNameFormDivContainer.addEventListener('submit', addBandName)
-// }
+function createBandNameForm() {
+    const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
+    bandNameFormDivContainer.innerHTML += `<form>
+                                            <h2>Add a Band Here:</h2>
+                                            <input type="text" id="band-name-input">
+                                            <input type="submit" value="Add Band">
+                                            </form>`
+    console.log(bandNameFormDivContainer);
+    bandNameFormDivContainer.addEventListener('submit', addBandName)
+}
 
 function fetchBandNames() {
     fetch(`${main_url}/bands`)
@@ -32,31 +32,31 @@ function fetchBandNames() {
     })
 }
 
-// function addBandName() {
-//     event.preventDefault();
-//     const bandNameInput = document.getElementById('band-name-input').value
+function addBandName() {
+    event.preventDefault();
+    const bandNameInput = document.getElementById('band-name-input').value
 
-//     let band = {
-//         band_name: bandNameInput
-//     }
+    let band = {
+        band_name: bandNameInput
+    }
 
-//     console.log(band);
+    console.log(band);
 
-//     fetch(`${main_url}/bands`, {
-//         method: "POST",
-//         headers: {
-//             "Content-type": "application/json",
-//             "Accept": "application/json"
-//         },
-//         body: JSON.stringify(band)
-//     })
-//     .then(resp => resp.json())
-//     .then(band => {
-//         let newBandName = new Band(band.id, band.band_name)
-//         newBandName.renderBands();
-//     })
-    // console.log(bandNameInput);
-// }
+    fetch(`${main_url}/bands`, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(band)
+    })
+    .then(resp => resp.json())
+    .then(band => {
+        let newBandName = new Band(band.id, band.band_name)
+        newBandName.renderBands();
+    })
+    console.log(bandNameInput);
+}
 
 
 
