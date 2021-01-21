@@ -96,7 +96,11 @@ function fetchBands() {
     // fetch get request
     fetch(`${main_url}/bands`)
     .then(resp => resp.json())
-    .then(console.log)
+    .then(bands => {
+        for(const band of bands) {
+            console.log(band)
+        }
+    })
 
 }
 
