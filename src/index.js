@@ -1,12 +1,13 @@
 
 // declare variables
 const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
+const bandNameInput = document.getElementById('band-name-input')
 
 
 
 // declare functions
 
-
+bandNameFormDivContainer.addEventListener('submit', addBandName)
 
 
 
@@ -21,8 +22,8 @@ function addBandName() {
     const bandNameDivContainer = document.getElementById('band-name-div-container')
     // console.log(bandNameDivContainer);
     const bandNameDiv = document.createElement('div')
-    const bandNameHeader3 = document.createElement('h3')
-    bandNameHeader3.innerText = bandNameInput
+    const bandNameHeader2 = document.createElement('h2')
+    bandNameHeader2.innerText = bandNameInput
 
     // create a form to add instruments to the band
     const bandInstrumentNameForm = document.createElement('form')
@@ -35,17 +36,15 @@ function addBandName() {
     bandInstrumentNameForm.addEventListener('submit', addBandInstrumentName)
 
     // append the elements to the DOM
-    bandNameHeader3.appendChild(bandInstrumentNameForm)
-    bandNameDiv.appendChild(bandNameHeader3)
-    bandNameDivContainer.appendChild(bandNameDiv)
+    bandNameDiv.append(bandNameHeader2, bandInstrumentNameForm)
 
+    bandNameDivContainer.appendChild(bandNameDiv)
 
 }
 
-function addBandInstrumentName() {
+function addBandInstrumentName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
-    const bandInstrumentNameInput = document.getElementById('band-instrument-name-input').value
-    console.log(bandInstrumentNameInput);
+    debugger;
 
 }
 
