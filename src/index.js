@@ -2,20 +2,44 @@
 // declare variables
 const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
 const bandNameInput = document.getElementById('band-name-input')
+const main_url = "http://localhost:3000"
 
 
 
 // declare functions
 
+
+
+
+// declare event listeners
 bandNameFormDivContainer.addEventListener('submit', addBandName)
 
 
 
 
-
+// write a function to fetch a newly created band name and add it to the database
 function addBandName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
 
+    // set up an object for a POST request with band names - need url to fetch
+    const bandNameObject = {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            band_name: bandNameInput.value
+        })
+    }
+    fetch(`${main_url}/bands`, bandNameObject)
+
+    renderBand();
+    e.target.reset();
+
+}
+
+function renderBand(e) {
     // get the value from the band name text box
     const bandNameInput = document.getElementById('band-name-input').value
     // console.log(bandNameInput);
@@ -47,8 +71,7 @@ function addBandName(e) {
 
     bandNameDivContainer.appendChild(bandNameDiv)
 
-    e.target.reset();
-
+    // e.target.reset();
 }
 
 
@@ -67,6 +90,9 @@ function addBandInstrumentName(e) {
 
 
 }
+
+// write a function to fetch all of the band names
+
 
 
 
