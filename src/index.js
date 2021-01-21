@@ -95,7 +95,8 @@ function addBandInstrumentName(e) {
 function fetchBands() {
     // fetch get request
     fetch(`${main_url}/bands`)
-    .then(resp => console.log(resp))
+    .then(resp => resp.json())
+    .then(console.log)
 
 }
 
