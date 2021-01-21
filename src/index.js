@@ -11,7 +11,9 @@ bandNameFormDivContainer.addEventListener('submit', addBandName)
 
 
 
-function addBandName() {
+
+
+function addBandName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
 
     // get the value from the band name text box
@@ -45,7 +47,10 @@ function addBandName() {
 
     bandNameDivContainer.appendChild(bandNameDiv)
 
+    e.target.reset();
+
 }
+
 
 function addBandInstrumentName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
@@ -58,7 +63,7 @@ function addBandInstrumentName(e) {
     // console.log(bandInstrumentInput);
     // debugger;
 
-
+    e.target.reset();
 
 
 }
