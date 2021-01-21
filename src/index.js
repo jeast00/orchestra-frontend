@@ -39,9 +39,10 @@ function addBandName(e) {
 
 }
 
-function renderBand(e) {
+function renderBand(band) {
+    console.log(band);
     // get the value from the band name text box
-    const bandNameInput = document.getElementById('band-name-input').value
+    // const bandNameInput = document.getElementById('band-name-input').value
     // console.log(bandNameInput);
 
     // create elements and append to the DOM
@@ -49,7 +50,7 @@ function renderBand(e) {
     // console.log(bandNameDivContainer);
     const bandNameDiv = document.createElement('div')
     const bandNameHeader2 = document.createElement('h2')
-    bandNameHeader2.innerText = bandNameInput
+    bandNameHeader2.innerText = band
 
     // create a form to add instruments to the band
     const bandInstrumentNameForm = document.createElement('form')
@@ -98,7 +99,7 @@ function fetchBands() {
     .then(resp => resp.json())
     .then(bands => {
         for(const band of bands) {
-            console.log(band)
+            renderBand(band.band_name)
         }
     })
 
