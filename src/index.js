@@ -22,7 +22,9 @@ createBandNameForm();
 
 
 function addBandName() {
-    event.preventDefault();
+    event.preventDefault(); // prevent the screen from refreshing on submit
+
+    // get the value from the band name text box
     const bandNameInput = document.getElementById('band-name-input').value
     // console.log(bandNameInput);
 
@@ -35,18 +37,26 @@ function addBandName() {
 
     // create a form to add instruments to the band
     const bandInstrumentNameForm = document.createElement('form')
-    bandInstrumentNameForm.innerHTML += `<h3>Add an Instrument</h3>
+    bandInstrumentNameForm.innerHTML += `<h4>Add an Instrument</h4>
                                          <input type="text" id="band-instrument-name-input">
                                          <input type="submit" value="Add Instrument">`
     console.log(bandInstrumentNameForm);
 
-    
+    // add event on submitting instrument names to the band 
+    bandInstrumentNameForm.addEventListener('submit', addBandInstrumentName)
 
+    // append the elements to the DOM
     bandNameHeader3.appendChild(bandInstrumentNameForm)
     bandNameDiv.appendChild(bandNameHeader3)
     bandNameDivContainer.appendChild(bandNameDiv)
 
-    
+
+}
+
+function addBandInstrumentName() {
+    event.preventDefault(); // prevent the screen from refreshing on submit
+    const bandInstrumentNameInput = document.getElementById('band-instrument-name-input').value
+    // console.log(bandInstrumentNameInput);
 
 
 }
