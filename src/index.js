@@ -26,6 +26,10 @@ function addBandName() {
     const bandNameInput = document.getElementById('band-name-input').value
     console.log(bandNameInput);
 
+    // create elements and append to the DOM
+    const bandNameDivContainer = document.getElementById('band-name-div-container')
+    console.log(bandNameDivContainer);
+
 }
 
 
