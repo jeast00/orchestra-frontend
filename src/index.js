@@ -39,6 +39,7 @@ function addBandName(e) {
 
 }
 
+// write a function to render the band names to the page
 function renderBand(band) {
     console.log(band);
     // get the value from the band name text box
@@ -54,13 +55,13 @@ function renderBand(band) {
 
     // create a form to add instruments to the band
     const bandInstrumentNameForm = document.createElement('form')
-    bandInstrumentNameForm.innerHTML += `<h4>Add an Instrument</h4>
+    bandInstrumentNameForm.innerHTML += `<h4>Add an Instrument:</h4>
                                          <input type="text" id="band-instrument-name-input">
                                          <input type="submit" value="Add Instrument">`
     console.log(bandInstrumentNameForm);
 
     // add event on submitting instrument names to the band 
-    bandInstrumentNameForm.addEventListener('submit', addBandInstrumentName)
+    bandInstrumentNameForm.addEventListener('submit', renderBandInstruments)
 
     // add a div for the band instruments
     const bandInstrumentNameDiv = document.createElement('div')
@@ -75,21 +76,31 @@ function renderBand(band) {
     // e.target.reset();
 }
 
-
+// write a function to add band instruments to the Band
 function addBandInstrumentName(e) {
-    event.preventDefault(); // prevent the screen from refreshing on submit
+    // event.preventDefault(); // prevent the screen from refreshing on submit
     // debugger;
+    // console.log(bandInstrumentInput);
+    // debugger;
+
+    // e.target.reset();
+
+    // fetch request the instruments url for a POST to save the instrument name to the database
+    
+
+
+}
+
+// write a function to render the band instrument names to the screen
+function renderBandInstruments(e) {
+    event.preventDefault();
     const bandInstrumentInput = e.target.children[1].value // had to throw debugger to find the input value from the e.target 
     const bandInstrumentDiv = e.target.previousElementSibling; // had to check debugger to find the div previous from the form instrument name input
     const bandInstrumentHeader3 = document.createElement('h3')
     bandInstrumentHeader3.innerText = bandInstrumentInput
     bandInstrumentDiv.append(bandInstrumentHeader3)
-    // console.log(bandInstrumentInput);
-    // debugger;
 
     e.target.reset();
-
-
 }
 
 // write a function to fetch all of the band names
