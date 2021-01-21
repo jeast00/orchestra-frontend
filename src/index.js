@@ -35,7 +35,18 @@ function addBandName() {
 
     // create a form to add instruments to the band
     const bandInstrumentNameForm = document.createElement('form')
+    bandInstrumentNameForm.innerHTML += `<h3>Add an Instrument</h3>
+                                         <input type="text" id="band-instrument-name-input">
+                                         <input type="submit" value="Add Instrument">`
     console.log(bandInstrumentNameForm);
+
+    
+
+    bandNameHeader3.appendChild(bandInstrumentNameForm)
+    bandNameDiv.appendChild(bandNameHeader3)
+    bandNameDivContainer.appendChild(bandNameDiv)
+
+    
 
 
 }
