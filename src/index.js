@@ -24,11 +24,19 @@ createBandNameForm();
 function addBandName() {
     event.preventDefault();
     const bandNameInput = document.getElementById('band-name-input').value
-    console.log(bandNameInput);
+    // console.log(bandNameInput);
 
     // create elements and append to the DOM
     const bandNameDivContainer = document.getElementById('band-name-div-container')
-    console.log(bandNameDivContainer);
+    // console.log(bandNameDivContainer);
+    const bandNameDiv = document.createElement('div')
+    const bandNameHeader3 = document.createElement('h3')
+    bandNameHeader3.innerText = bandNameInput
+
+    // create a form to add instruments to the band
+    const bandInstrumentNameForm = document.createElement('form')
+    console.log(bandInstrumentNameForm);
+
 
 }
 
