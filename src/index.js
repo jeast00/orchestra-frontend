@@ -33,8 +33,10 @@ function addBandName(e) {
         })
     }
     fetch(`${main_url}/bands`, bandNameObject)
+    .then(resp => resp.json())
+    .then(console.log)
 
-    renderBand();
+    renderBand(bandNameInput.value);
     e.target.reset();
 
 }
@@ -50,6 +52,8 @@ function renderBand(band) {
     const bandNameDivContainer = document.getElementById('band-name-div-container')
     // console.log(bandNameDivContainer);
     const bandNameDiv = document.createElement('div')
+    // need to set the band id to the div element after new band has been added
+    bandNameDiv.dataset.id = band.id
     const bandNameHeader2 = document.createElement('h2')
     bandNameHeader2.innerText = band
 
@@ -58,7 +62,7 @@ function renderBand(band) {
     bandInstrumentNameForm.innerHTML += `<h4>Add an Instrument:</h4>
                                          <input type="text" id="band-instrument-name-input">
                                          <input type="submit" value="Add Instrument">`
-    console.log(bandInstrumentNameForm);
+    // console.log(bandInstrumentNameForm);
 
     // add event on submitting instrument names to the band 
     bandInstrumentNameForm.addEventListener('submit', renderBandInstruments)
@@ -69,7 +73,7 @@ function renderBand(band) {
     // append the elements to the DOM
     bandNameDiv.append(bandNameHeader2, bandInstrumentNameDiv, bandInstrumentNameForm)
 
-    console.log(bandNameDiv);
+    // console.log(bandNameDiv);
 
     bandNameDivContainer.appendChild(bandNameDiv)
 
@@ -77,7 +81,8 @@ function renderBand(band) {
 }
 
 // write a function to add band instruments to the Band
-function addBandInstrumentName(e) {
+function addBandInstrumentName(instrument) {
+    console.log(instrument);
     // event.preventDefault(); // prevent the screen from refreshing on submit
     // debugger;
     // console.log(bandInstrumentInput);
@@ -86,7 +91,16 @@ function addBandInstrumentName(e) {
     // e.target.reset();
 
     // fetch request the instruments url for a POST to save the instrument name to the database
-    
+    fetch(`${main_url}/instruments`, {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify({
+            instrument_name: instrument
+        })
+    })
 
 
 }
@@ -99,6 +113,9 @@ function renderBandInstruments(e) {
     const bandInstrumentHeader3 = document.createElement('h3')
     bandInstrumentHeader3.innerText = bandInstrumentInput
     bandInstrumentDiv.append(bandInstrumentHeader3)
+
+    // call the addBandInstrumentName with argument to render and save the instrument name to the band
+    addBandInstrumentName(bandInstrumentInput)
 
     e.target.reset();
 }
