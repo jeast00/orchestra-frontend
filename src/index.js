@@ -35,8 +35,13 @@ function addBandName() {
     // add event on submitting instrument names to the band 
     bandInstrumentNameForm.addEventListener('submit', addBandInstrumentName)
 
+    // add a div for the band instruments
+    const bandInstrumentNameDiv = document.createElement('div')
+
     // append the elements to the DOM
-    bandNameDiv.append(bandNameHeader2, bandInstrumentNameForm)
+    bandNameDiv.append(bandNameHeader2, bandInstrumentNameDiv, bandInstrumentNameForm)
+
+    console.log(bandNameDiv);
 
     bandNameDivContainer.appendChild(bandNameDiv)
 
@@ -44,7 +49,17 @@ function addBandName() {
 
 function addBandInstrumentName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
-    debugger;
+    // debugger;
+    const bandInstrumentInput = e.target.children[1].value // had to throw debugger to find the input value from the e.target 
+    const bandInstrumentDiv = e.target.previousElementSibling; // had to check debugger to find the div previous from the form instrument name input
+    const bandInstrumentHeader3 = document.createElement('h3')
+    bandInstrumentHeader3.innerText = bandInstrumentInput
+    bandInstrumentDiv.append(bandInstrumentHeader3)
+    // console.log(bandInstrumentInput);
+    // debugger;
+
+
+
 
 }
 
