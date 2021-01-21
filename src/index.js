@@ -1,23 +1,12 @@
 
-
 // declare variables
-// const bandId = event.target.parentElement.dataset.id
-// const main_url = "http://localhost:3000"
+const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
+
+
 
 // declare functions
 
-function createBandNameForm() {
-    const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
-    bandNameFormDivContainer.innerHTML += `<form>
-                                            <h2>Add a Band Here:</h2>
-                                            <input type="text" id="band-name-input">
-                                            <input type="submit" value="Add Band">
-                                            </form>`
-    // console.log(bandNameFormDivContainer);
-    bandNameFormDivContainer.addEventListener('submit', addBandName)
-}
 
-createBandNameForm();
 
 
 
@@ -56,8 +45,7 @@ function addBandName() {
 function addBandInstrumentName() {
     event.preventDefault(); // prevent the screen from refreshing on submit
     const bandInstrumentNameInput = document.getElementById('band-instrument-name-input').value
-    // console.log(bandInstrumentNameInput);
-
+    console.log(bandInstrumentNameInput);
 
 }
 
