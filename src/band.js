@@ -4,21 +4,6 @@ class Band {
         this.band_name = band_name
     }
 
-
-    // write a function to fetch all of the band names
-    fetchBands() {
-        // fetch get request
-        fetch(`${main_url}/bands`)
-        .then(resp => resp.json())
-        .then(bands => {
-            for(const band of bands) {
-                let bandName = new Band(band.id, band.band_name)
-                bandName.renderBand();
-            }
-        })
-
-    }
-
     // add the render bands function from index.js to here
 
     // write a function to render the band names to the page
@@ -31,11 +16,19 @@ class Band {
         // create elements and append to the DOM
         const bandNameDivContainer = document.getElementById('band-name-div-container')
         // console.log(bandNameDivContainer);
+
+        // create elements and set their attributes
         const bandNameDiv = document.createElement('div')
         bandNameDiv.setAttribute('id', 'band-name-div')
         bandNameDiv.setAttribute('data-id', this.id)
+
         const bandNameHeader2 = document.createElement('h2')
         bandNameHeader2.innerText = `${this.band_name}`
+
+        const bandDeleteButton = document.createElement('button')
+        bandDeleteButton.setAttribute('id', 'band-delete-button')
+        bandDeleteButton.innerText = 'Delete Band'
+        bandDeleteButton.addEventListener('click', this.deleteBand)
 
         // create a form to add instruments to the band
         const bandInstrumentNameForm = document.createElement('form')
@@ -51,8 +44,16 @@ class Band {
         const bandInstrumentNameDiv = document.createElement('div')
 
         // append the elements to the DOM
+        bandNameHeader2.appendChild(bandDeleteButton)
         bandNameDiv.append(bandNameHeader2, bandInstrumentNameDiv, bandInstrumentNameForm)
         bandNameDivContainer.appendChild(bandNameDiv)
 
+        }
+
+        deleteBand() {
+            // need to get id of band name 
+            // debugger;
+            const bandID = parseInt(event.target.parentElement.parentElement.dataset.id)
+            console.log(bandID);
         }
 }

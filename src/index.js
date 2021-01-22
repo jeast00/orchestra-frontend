@@ -44,7 +44,8 @@ function addBandName(e) {
         let newBandName = new Band(band.id, band.band_name)
         newBandName.renderBand();
     })
-
+    
+    // reset the form 
     e.target.reset();
 }
 
