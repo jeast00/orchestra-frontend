@@ -12,7 +12,7 @@ function fetchBands() {
     // fetch get request
     fetch(`${main_url}/bands`)
     .then(resp => resp.json())
-    .then(bands => bands.forEach(renderBand))
+    .then(bands => bands.forEach(console.log))
 
 }
 
