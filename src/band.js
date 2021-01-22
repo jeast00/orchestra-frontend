@@ -54,6 +54,12 @@ class Band {
             // need to get id of band name 
             // debugger;
             const bandID = parseInt(event.target.parentElement.parentElement.dataset.id)
-            console.log(bandID);
+            // console.log(bandID);
+
+            // fetch delete request with url and id of band
+            fetch(`${main_url}/bands/${bandID}`, {
+                method: 'DELETE'
+            })
+            event.target.parentElement.parentElement.remove();
         }
 }
