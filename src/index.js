@@ -12,7 +12,7 @@ function fetchBands() {
     // fetch get request
     fetch(`${main_url}/bands`)
     .then(resp => resp.json())
-    .then(bands => bands.forEach(console.log))
+    .then(bands => bands.forEach(data => renderBand(data.data)))
 
 }
 
@@ -31,7 +31,7 @@ createBandNameForm(); // call the bandNameFormFunction - will show html on page
 
 // write a function to render the band names to the page
 function renderBand(band) {
-    console.log(band);
+    // console.log(band);
     // create elements and append to the DOM
     const bandNameDivContainer = document.getElementById('band-name-div-container')
     // console.log(bandNameDivContainer);
@@ -42,7 +42,7 @@ function renderBand(band) {
     bandNameDiv.setAttribute('data-id', band.id)
 
     const bandNameHeader2 = document.createElement('h2')
-    bandNameHeader2.innerText = band.band_name
+    bandNameHeader2.innerText = band.attributes.band_name
 
     const bandDeleteButton = document.createElement('button')
     bandDeleteButton.setAttribute('id', 'band-delete-button')
@@ -61,6 +61,14 @@ function renderBand(band) {
 
     // add a div for the band instruments
     const bandInstrumentNameDiv = document.createElement('div')
+    band.attributes.instruments.forEach(instrument => {
+        const bandInstrumentNameHeader3 = document.createElement('h3')
+        bandInstrumentNameHeader3.setAttribute('data-id', instrument.id)
+        bandInstrumentNameHeader3.innerText = instrument.instrument_name
+        bandInstrumentNameDiv.appendChild(bandInstrumentNameHeader3)
+    })
+
+    console.log(band.attributes.instruments);
 
     // append the elements to the DOM
     bandNameHeader2.appendChild(bandDeleteButton)
@@ -87,7 +95,7 @@ function addBandName(e) {
 
     fetch(`${main_url}/bands`, bandNameObject)
     .then(resp => resp.json())
-    .then(renderBand)
+    .then(data => renderBand(data.data))
 
     // reset the form 
     e.target.reset();
