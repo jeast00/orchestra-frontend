@@ -49,30 +49,43 @@ function renderBand(band) {
     bandDeleteButton.innerText = 'Delete Band'
     bandDeleteButton.addEventListener('click', deleteBand)
 
+    let band_Instruments = ""
+
+    for(instrument of band.attributes.instruments) {
+        console.log(band.attributes.instruments)
+        band_Instruments += `<option>${instrument.instrument_name}</option>`
+    }
+
+    // console.log(band_Instruments)
+
     // create a form to add instruments to the band
-    const bandInstrumentNameForm = document.createElement('form')
-    bandInstrumentNameForm.innerHTML += `<h4>Add an Instrument:</h4>
-                                        <input type="text" id="band-instrument-name-input">
+    const bandInstrumentNameSelectForm = document.createElement('form')
+    bandInstrumentNameSelectForm.innerHTML += `<h4>Add an Instrument:</h4>
+                                        <select id="band-instrument-name-select">${band_Instruments}</select>
                                         <input type="submit" value="Add Instrument">`
     // console.log(bandInstrumentNameForm);
 
     // add event on submitting instrument names to the band 
-    bandInstrumentNameForm.addEventListener('submit', renderBandInstruments)
+    bandInstrumentNameSelectForm.addEventListener('submit', renderBandInstruments)
+
+    
 
     // add a div for the band instruments
-    const bandInstrumentNameDiv = document.createElement('div')
+    const bandInstrumentDiv = document.createElement('div')
     band.attributes.instruments.forEach(instrument => {
+        const bandInstrumentNameDiv = document.createElement('div')
+        bandInstrumentNameDiv.setAttribute('data-id', instrument.id)
         const bandInstrumentNameHeader3 = document.createElement('h3')
-        bandInstrumentNameHeader3.setAttribute('data-id', instrument.id)
         bandInstrumentNameHeader3.innerText = instrument.instrument_name
         bandInstrumentNameDiv.appendChild(bandInstrumentNameHeader3)
+        bandInstrumentDiv.appendChild(bandInstrumentNameDiv)
     })
 
-    console.log(band.attributes.instruments);
+    // console.log(band.attributes.instruments);
 
     // append the elements to the DOM
     bandNameHeader2.appendChild(bandDeleteButton)
-    bandNameDiv.append(bandNameHeader2, bandInstrumentNameDiv, bandInstrumentNameForm)
+    bandNameDiv.append(bandNameHeader2, bandInstrumentDiv, bandInstrumentNameSelectForm)
     bandNameDivContainer.appendChild(bandNameDiv)
 
     }
@@ -80,7 +93,7 @@ function renderBand(band) {
 // submit the band name to the DOM and save it to the database
 function addBandName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
-    let bandNameInput = document.getElementById('band-name-input').value 
+    // let bandNameInput = document.getElementById('band-name-input').value 
 
     const bandNameObject = {
         method: 'POST',
@@ -89,7 +102,7 @@ function addBandName(e) {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            band_name: bandNameInput
+            band_name: e.target
         })
     }
 
@@ -103,18 +116,19 @@ function addBandName(e) {
 
 function renderBandInstruments(e) {
     event.preventDefault();
-    console.log(e.target.parentElement.dataset.id)
-    const bandInstrumentInput = e.target.children[1].value // had to throw debugger to find the input value from the e.target 
+    // console.log(e.target.parentElement.dataset.id)
+    bandInstrumentValue = e.target.children[1].value; // had to throw debugger to find the input value from the e.target 
+    // debugger;
     const bandInstrumentDiv = e.target.previousElementSibling; // had to check debugger to find the div previous from the form instrument name input
     const bandID = e.target.parentElement.dataset.id
     const bandInstrumentHeader3 = document.createElement('h3')
-    bandInstrumentHeader3.innerText = bandInstrumentInput
+    bandInstrumentHeader3.innerText = bandInstrumentValue
     bandInstrumentDiv.append(bandInstrumentHeader3)
 
     // call the addBandInstrumentName with argument to render and save the instrument name to the band
-    addBandInstrumentName(bandInstrumentInput, bandID)
+    addBandInstrumentName(bandInstrumentValue, bandID)
 
-    e.target.reset();
+    // e.target.reset();
 }
 
 function addBandInstrumentName(instrument, bandID) {
