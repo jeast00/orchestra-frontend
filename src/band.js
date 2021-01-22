@@ -8,10 +8,6 @@ class Band {
 
     // write a function to render the band names to the page
     renderBand() {
-        // console.log(band);
-        // get the value from the band name text box
-        // const bandNameInput = document.getElementById('band-name-input').value
-        // console.log(bandNameInput);
 
         // create elements and append to the DOM
         const bandNameDivContainer = document.getElementById('band-name-div-container')
@@ -38,7 +34,7 @@ class Band {
         // console.log(bandInstrumentNameForm);
 
         // add event on submitting instrument names to the band 
-        // bandInstrumentNameForm.addEventListener('submit', Instrument.renderBandInstruments)
+        bandInstrumentNameForm.addEventListener('submit', addBandName)
 
         // add a div for the band instruments
         const bandInstrumentNameDiv = document.createElement('div')
@@ -62,4 +58,26 @@ class Band {
             })
             event.target.parentElement.parentElement.remove();
         }
+
+
+        addBandInstrumentName(instrument) {
+            event.preventDefault(); // prevent the screen from refreshing on submit
+            // debugger;
+            // console.log(bandInstrumentInput);
+            // debugger;
+    
+            // fetch request the instruments url for a POST to save the instrument name to the database
+            fetch(`${main_url}/instruments`, {
+                method: 'POST',
+                headers: {
+                    "Content-type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify({
+                    instrument_name: instrument
+                })
+            })
+    
+        }
+
 }

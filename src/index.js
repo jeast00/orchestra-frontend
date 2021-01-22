@@ -44,7 +44,7 @@ function addBandName(e) {
         let newBandName = new Band(band.id, band.band_name)
         newBandName.renderBand();
     })
-    
+
     // reset the form 
     e.target.reset();
 }
@@ -63,33 +63,13 @@ function fetchBands() {
 
 }
 
+
+// call the fetchBands function
 fetchBands();
 
 
-// write a function to add band instruments to the Band
-function addBandInstrumentName() {
-    event.preventDefault(); // prevent the screen from refreshing on submit
-    // debugger;
-    // console.log(bandInstrumentInput);
-    // debugger;
 
-    // fetch request the instruments url for a POST to save the instrument name to the database
-    fetch(`${main_url}/instruments`, {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({
-            instrument_name: instrument
-        })
-    })
 
-    
-
-}
-
-// write a function to render the band instrument names to the screen
 
 
 

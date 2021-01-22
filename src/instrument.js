@@ -5,7 +5,7 @@ class Instrument {
         this.band_id = band_id
     }
 
-    // render the band instrument names
+    // render the band instrument names - moved from index.js - not working 
 
     renderBandInstruments(e) {
         event.preventDefault();
@@ -16,7 +16,7 @@ class Instrument {
         bandInstrumentDiv.append(bandInstrumentHeader3)
     
         // call the addBandInstrumentName with argument to render and save the instrument name to the band
-        addBandInstrumentName(bandInstrumentInput)
+        // this.addBandInstrumentName(bandInstrumentInput)
     
         e.target.reset();
     }
