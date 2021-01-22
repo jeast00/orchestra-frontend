@@ -1,11 +1,25 @@
 
 // declare variables
 
+// main url to use fetch request
 const main_url = "http://localhost:3000"
 
-fetchBands();
 
 // declare functions
+
+// create a band name form
+function createBandNameForm() {
+    const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
+    bandNameFormDivContainer.innerHTML += `<form>
+                                            <h2>Add a Band Here:</h2>
+                                            <input type="text" id="band-name-input">
+                                            <input type="submit" value="Add Band">
+                                            </form>`
+}
+
+createBandNameForm();
+
+// submit the band name to the DOM and save it to the database
 
 // write a function to fetch all of the band names
 function fetchBands() {
@@ -21,17 +35,15 @@ function fetchBands() {
 
 }
 
+fetchBands();
 
 
 // write a function to add band instruments to the Band
-function addBandInstrumentName(instrument) {
-    console.log(instrument);
-    // event.preventDefault(); // prevent the screen from refreshing on submit
+function addBandInstrumentName() {
+    event.preventDefault(); // prevent the screen from refreshing on submit
     // debugger;
     // console.log(bandInstrumentInput);
     // debugger;
-
-    // e.target.reset();
 
     // fetch request the instruments url for a POST to save the instrument name to the database
     fetch(`${main_url}/instruments`, {
@@ -45,23 +57,11 @@ function addBandInstrumentName(instrument) {
         })
     })
 
+    
 
 }
 
 // write a function to render the band instrument names to the screen
-function renderBandInstruments(e) {
-    event.preventDefault();
-    const bandInstrumentInput = e.target.children[1].value // had to throw debugger to find the input value from the e.target 
-    const bandInstrumentDiv = e.target.previousElementSibling; // had to check debugger to find the div previous from the form instrument name input
-    const bandInstrumentHeader3 = document.createElement('h3')
-    bandInstrumentHeader3.innerText = bandInstrumentInput
-    bandInstrumentDiv.append(bandInstrumentHeader3)
-
-    // call the addBandInstrumentName with argument to render and save the instrument name to the band
-    addBandInstrumentName(bandInstrumentInput)
-
-    e.target.reset();
-}
 
 
 
