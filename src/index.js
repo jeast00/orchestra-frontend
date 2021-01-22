@@ -15,11 +15,38 @@ function createBandNameForm() {
                                             <input type="text" id="band-name-input">
                                             <input type="submit" value="Add Band">
                                             </form>`
+    bandNameFormDivContainer.addEventListener('submit', addBandName) // event listener on submit with passing function call - do not invoke function
 }
 
-createBandNameForm();
+createBandNameForm(); // call the bandNameFormFunction - will show html on page
 
 // submit the band name to the DOM and save it to the database
+function addBandName(e) {
+    event.preventDefault(); // prevent the screen from refreshing on submit
+    const bandNameInput = document.getElementById('band-name-input').value 
+
+    // create an object to pass through the fetch post request
+    let band = {
+        band_name: bandNameInput
+    }
+
+    // fetch post request 
+    fetch(`${main_url}/bands`, {
+        method: 'POST',
+        headers: {
+            "Content-type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(band)
+    })
+    .then(resp => resp.json())
+    .then(band => {
+        let newBandName = new Band(band.id, band.band_name)
+        newBandName.renderBand();
+    })
+
+    e.target.reset();
+}
 
 // write a function to fetch all of the band names
 function fetchBands() {
