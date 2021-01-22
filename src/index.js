@@ -1,49 +1,29 @@
 
 // declare variables
-const bandNameFormDivContainer = document.getElementById('band-name-form-div-container')
-const bandNameInput = document.getElementById('band-name-input')
+
 const main_url = "http://localhost:3000"
 
-
+fetchBands();
 
 // declare functions
 
-
-
-
-// declare event listeners
-bandNameFormDivContainer.addEventListener('submit', addBandName)
-
-
-
-
-// write a function to fetch a newly created band name and add it to the database
-function addBandName(e) {
-    event.preventDefault(); // prevent the screen from refreshing on submit
-
-    // set up an object for a POST request with band names - need url to fetch
-    const bandNameObject = {
-        method: 'POST',
-        headers: {
-            "Content-type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify({
-            band_name: bandNameInput.value
-        })
-    }
-    fetch(`${main_url}/bands`, bandNameObject)
+// write a function to fetch all of the band names
+function fetchBands() {
+    // fetch get request
+    fetch(`${main_url}/bands`)
     .then(resp => resp.json())
-    .then(console.log)
-
-    renderBand(bandNameInput.value);
-    e.target.reset();
+    .then(bands => {
+        for(const band of bands) {
+            renderBand(band.band_name)
+            // console.log(band.id);
+        }
+    })
 
 }
 
 // write a function to render the band names to the page
 function renderBand(band) {
-    console.log(band);
+    // console.log(band);
     // get the value from the band name text box
     // const bandNameInput = document.getElementById('band-name-input').value
     // console.log(bandNameInput);
@@ -52,8 +32,8 @@ function renderBand(band) {
     const bandNameDivContainer = document.getElementById('band-name-div-container')
     // console.log(bandNameDivContainer);
     const bandNameDiv = document.createElement('div')
-    // need to set the band id to the div element after new band has been added
-    bandNameDiv.dataset.id = band.id
+    bandNameDiv.setAttribute('id', 'band-name-div')
+    bandNameDiv.setAttribute('data-id', band.id)
     const bandNameHeader2 = document.createElement('h2')
     bandNameHeader2.innerText = band
 
@@ -120,21 +100,7 @@ function renderBandInstruments(e) {
     e.target.reset();
 }
 
-// write a function to fetch all of the band names
-function fetchBands() {
-    // fetch get request
-    fetch(`${main_url}/bands`)
-    .then(resp => resp.json())
-    .then(bands => {
-        for(const band of bands) {
-            renderBand(band.band_name)
-        }
-    })
 
-}
-
-// call the functions
-fetchBands();
 
 
 
