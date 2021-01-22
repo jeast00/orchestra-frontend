@@ -14,51 +14,14 @@ function fetchBands() {
     .then(resp => resp.json())
     .then(bands => {
         for(const band of bands) {
-            renderBand(band.band_name)
-            // console.log(band.id);
+            let bandName = new Band(band.id, band.band_name)
+            bandName.renderBand();
         }
     })
 
 }
 
-// write a function to render the band names to the page
-function renderBand(band) {
-    // console.log(band);
-    // get the value from the band name text box
-    // const bandNameInput = document.getElementById('band-name-input').value
-    // console.log(bandNameInput);
 
-    // create elements and append to the DOM
-    const bandNameDivContainer = document.getElementById('band-name-div-container')
-    // console.log(bandNameDivContainer);
-    const bandNameDiv = document.createElement('div')
-    bandNameDiv.setAttribute('id', 'band-name-div')
-    bandNameDiv.setAttribute('data-id', band.id)
-    const bandNameHeader2 = document.createElement('h2')
-    bandNameHeader2.innerText = band
-
-    // create a form to add instruments to the band
-    const bandInstrumentNameForm = document.createElement('form')
-    bandInstrumentNameForm.innerHTML += `<h4>Add an Instrument:</h4>
-                                         <input type="text" id="band-instrument-name-input">
-                                         <input type="submit" value="Add Instrument">`
-    // console.log(bandInstrumentNameForm);
-
-    // add event on submitting instrument names to the band 
-    bandInstrumentNameForm.addEventListener('submit', renderBandInstruments)
-
-    // add a div for the band instruments
-    const bandInstrumentNameDiv = document.createElement('div')
-
-    // append the elements to the DOM
-    bandNameDiv.append(bandNameHeader2, bandInstrumentNameDiv, bandInstrumentNameForm)
-
-    // console.log(bandNameDiv);
-
-    bandNameDivContainer.appendChild(bandNameDiv)
-
-    // e.target.reset();
-}
 
 // write a function to add band instruments to the Band
 function addBandInstrumentName(instrument) {
