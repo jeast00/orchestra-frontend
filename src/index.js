@@ -7,6 +7,8 @@ const main_url = "http://localhost:3000"
 
 // declare functions
 
+createBandNameForm(); // call the bandNameFormFunction - will show html on page
+
 // write a function to fetch all of the band names
 function fetchBands() {
     // fetch get request
@@ -15,6 +17,16 @@ function fetchBands() {
     .then(bands => bands.forEach(data => renderBand(data.data)))
 
 }
+
+// create a function to get all of the band instrument names
+// function fetchInstruments() {
+//     // fetch get request for instrument names
+//     fetch(`${main_url}/instruments`)
+//     .then(resp => resp.json())
+//     .then(instruments => instruments.forEach(data => populateBandInstrumentNamesInSelect(data.data)))
+// }
+
+//----------------------------------//
 
 // create a band name form
 function createBandNameForm() {
@@ -27,17 +39,20 @@ function createBandNameForm() {
     bandNameFormDivContainer.addEventListener('submit', addBandName) // event listener on submit with passing function call - do not invoke function
 }
 
-createBandNameForm(); // call the bandNameFormFunction - will show html on page
+
+//---------------------------------//
+
 
 // write a function to render the band names to the page
 function renderBand(band) {
     // console.log(band);
+    const mainDivContainer = document.getElementById('main-div-container')
     // create elements and append to the DOM
     const bandNameDivContainer = document.getElementById('band-name-div-container')
-    // console.log(bandNameDivContainer);
+    console.log(bandNameDivContainer);
 
-    // create elements and set their attributes
-    const bandNameDiv = document.createElement('div')
+    // get the band Name Div element and set attributes
+    const bandNameDiv = document.getElementById('band-name-div')
     bandNameDiv.setAttribute('id', 'band-name-div')
     bandNameDiv.setAttribute('data-id', band.id)
 
@@ -49,19 +64,20 @@ function renderBand(band) {
     bandDeleteButton.innerText = 'Delete Band'
     bandDeleteButton.addEventListener('click', deleteBand)
 
-    let band_Instruments = ""
+    // let band_Instruments = ""
 
-    for(instrument of band.attributes.instruments) {
-        console.log(band.attributes.instruments)
-        band_Instruments += `<option>${instrument.instrument_name}</option>`
-    }
+    // for(instrument of band.instruments) {
+    //     console.log(instrument)
+    //     band_Instruments += `<option>${instrument.instrument_name}</option>`
+    // }
 
     // console.log(band_Instruments)
 
-    // create a form to add instruments to the band
+    // // create a form to add instruments to the select drop down box
     const bandInstrumentNameSelectForm = document.createElement('form')
+    bandInstrumentNameSelectForm.setAttribute('id', 'band-instrument-name-select-form')
     bandInstrumentNameSelectForm.innerHTML += `<h4>Add an Instrument:</h4>
-                                        <select id="band-instrument-name-select">${band_Instruments}</select>
+                                        <select id="band-instrument-name-select"></select>
                                         <input type="submit" value="Add Instrument">`
     // console.log(bandInstrumentNameForm);
 
@@ -85,15 +101,16 @@ function renderBand(band) {
 
     // append the elements to the DOM
     bandNameHeader2.appendChild(bandDeleteButton)
-    bandNameDiv.append(bandNameHeader2, bandInstrumentDiv, bandInstrumentNameSelectForm)
+    bandNameDiv.append(bandNameHeader2, bandInstrumentDiv)
     bandNameDivContainer.appendChild(bandNameDiv)
+    mainDivContainer.append(bandInstrumentNameSelectForm)
 
     }
 
 // submit the band name to the DOM and save it to the database
 function addBandName(e) {
     event.preventDefault(); // prevent the screen from refreshing on submit
-    // let bandNameInput = document.getElementById('band-name-input').value 
+    let bandNameInput = document.getElementById('band-name-input').value 
 
     const bandNameObject = {
         method: 'POST',
@@ -102,7 +119,7 @@ function addBandName(e) {
             "Accept": "application/json"
         },
         body: JSON.stringify({
-            band_name: e.target
+            band_name: bandNameInput
         })
     }
 
@@ -152,6 +169,17 @@ function addBandInstrumentName(instrument, bandID) {
 
 }
 
+// function populateBandInstrumentNamesInSelect(instrument) {
+//     // console.log(instrument);
+//     const getBandNameDivContainer = document.getElementById('band-name-div-container')
+//     const getBandDivContainer = getBandNameDivContainer.children[0]
+//     console.log(getBandDivContainer);
+//     let bandInstrumentOption = document.createElement('option')
+//     bandInstrumentOption.innerHTML += `${instrument.attributes.instrument_name}`
+//     console.log(bandInstrumentOption);
+//     // getSelectTag.append(bandInstrumentOption)
+// }
+
 
 function deleteBand() {
     // need to get id of band name 
@@ -164,13 +192,17 @@ function deleteBand() {
     fetch(`${main_url}/bands/${bandDeleteID}`, {
         method: 'DELETE'
     })
-    event.target.parentElement.parentElement.remove();
+    // debugger;
+    event.target.parentElement.parentElement.parentElement.parentElement.remove();
 }
 
 
 
 // call the fetchBands function
 fetchBands();
+
+// call the fetchInstruments function
+// fetchInstruments();
 
 
 
